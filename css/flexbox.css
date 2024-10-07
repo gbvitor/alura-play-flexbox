@@ -1,25 +1,131 @@
+/* Container do cabeçalho: */
 .cabecalho__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    position: fixed;
-    top: 0;
+    display: flex; /* Alinha os itens do cabeçalho em uma linha */
+    justify-content: space-between; /* Espaça os itens igualmente entre as bordas */
+    align-items: center; /* Alinha verticalmente os itens ao centro */
+    padding: 0 20px; /* Define o padding horizontal de 20px */
+    position: fixed; /* Fixa o cabeçalho no topo da página */
+    top: 0; /* Fixa o cabeçalho na parte superior da tela */
 }
+
+/* Item de pesquisa no cabeçalho: por padrão oculto */
 .cabecalho__pesquisar__item {
-    display: none;
+    display: none; /* Esconde o item de pesquisa */
 }
+
+/* Lista de itens dentro do menu: */
+.menu__lista {
+    display: flex; /* Exibe os itens em uma linha */
+    justify-content: space-around; /* Distribui os itens igualmente no menu */
+    height: 100%; /* A lista ocupa toda a altura do menu */
+}
+
+/* Itens da lista do menu: */
+.menu__lista li {
+    align-self: center; /* Alinha verticalmente cada item da lista */
+}
+
+/* Itens do menu: exibidos em colunas */
+.menu__lista .menu__itens {
+    display: flex; /* Itens dispostos em linha */
+    flex-direction: column; /* Alinha os itens verticalmente */
+    gap: 8px; /* Espaçamento entre os itens de 8px */
+}
+
+/* Esconde os itens 2, 3 e 4 da lista de menu */
+.menu__lista:nth-child(2),
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4) {
+    display: none; /* Não exibe os itens específicos da lista */
+}
+
+/* Container para seção superior com rolagem horizontal */
+.superior__secao__container {
+    display: flex; /* Itens dispostos em linha */
+    align-items: center; /* Alinhamento vertical dos itens */
+    white-space: nowrap; /* Impede quebras de linha dentro do container */
+    overflow: scroll; /* Adiciona barra de rolagem horizontal quando necessário */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+/* Container do menu fixo na parte inferior da página: */
+.menu__container {
+    position: fixed; /* Fixa o menu na parte inferior */
+    bottom: 0; /* Alinha o menu ao final da página */
+    height: 74px; /* Define a altura do menu */
+    width: 100%; /* Faz o menu ocupar 100% da largura */
+}
+
+/* Container do rodapé: layout flexível com elementos empilhados */
 .rodape__container {
-    display: flex;
-    /* flex-direction: column;
-    flex-wrap: wrap;*/
-    flex-flow: column wrap;
+    display: flex; /* Habilita o layout flexbox */
+    flex-flow: column wrap; /* Itens dispostos em colunas e podem quebrar linhas quando necessário */
 }
+
+/* Estilos para telas com largura mínima de 834px (versão desktop) */
 @media screen and (min-width: 834px) {
+    /* Exibe o item de pesquisa no cabeçalho */
     .cabecalho__pesquisar__item {
-        display: block;
+        display: block; /* Mostra o item de pesquisa */
     }
+
+    /* Ajuste do rodapé para distribuir os elementos */
     .rodape__container {
-        justify-content: space-between;
+        justify-content: space-between; /* Espaça os itens igualmente */
+    }
+
+    /* O menu agora aparece no lado esquerdo e tem uma altura ajustável */
+    .menu__container {
+        left: 0; /* Fixa o menu na lateral esquerda */
+        height: auto; /* A altura se ajusta conforme o conteúdo */
+        width: 74px; /* Define a largura do menu */
+        top: 80px; /* Posição a partir do topo da tela */
+    }
+
+    /* Ajuste da lista do menu para ser exibida em colunas no desktop */
+    .menu__lista {
+        flex-direction: column; /* Disposição dos itens em coluna */
+        justify-content: flex-start; /* Itens alinhados ao início */
+        padding-top: 15px; /* Espaçamento superior de 15px */
+        gap: 33px; /* Espaçamento maior entre os itens do menu */
+    }
+}
+@media screen and (min-width: 1440px) {
+    .menu__container {
+        width: 239px;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        overflow: scroll; /* Adiciona barra de rolagem vertical quando necessário */
+    }
+    .menu__lista:nth-child(2),
+    .menu__lista:nth-child(3),
+    .menu__lista:nth-child(4) {
+        display: flex;
+    }
+    .menu__lista {
+        height: auto;
+        padding: 20px 17px 20px 15px;
+        gap: 15px;
+    }
+    .menu__lista .menu__itens {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+    .menu__lista:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+    .menu__lista .jogos {
+        order: 3;
+    }
+    .menu__lista .premium {
+        order: 2;
+    }
+    .menu__lista .filmes {
+        order: 1;
+    }
+    .menu__lista .maispagina {
+        order: 4;
     }
 }
