@@ -47,6 +47,16 @@
     overflow: scroll; /* Adiciona barra de rolagem horizontal quando necessário */
     gap: 10px; /* Espaçamento entre os itens */
 }
+.videos__container {
+    display: flex; /* Itens dispostos em linha */
+    flex-wrap: wrap; /* Itens podem quebrar linhas quando-needed */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+.videos__item {
+    width: 303px; /* Largura dos itens */
+    height: 280px; /* Altura dos itens */
+    flex-grow: 1; /* Aumenta o tamanho dos itens para que sejam exibidos todos ao mesmo tempo */
+}
 
 /* Container do menu fixo na parte inferior da página: */
 .menu__container {
@@ -90,6 +100,8 @@
         gap: 33px; /* Espaçamento maior entre os itens do menu */
     }
 }
+
+/* Estilos para telas com largura mínima de 1440px (versão tablet) */
 @media screen and (min-width: 1440px) {
     .menu__container {
         width: 239px;
